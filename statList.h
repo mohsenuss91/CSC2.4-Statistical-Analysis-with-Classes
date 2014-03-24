@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class statList
+class statList     
 {
 public:
     bool isEmpty() const;  /* *WRITTEN* */

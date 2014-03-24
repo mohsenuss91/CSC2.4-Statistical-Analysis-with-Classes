@@ -16,6 +16,7 @@
 bool statList::isEmpty() const
 {
     return (length == 0);
+    
 }
 
 bool statList::isFull() const
@@ -132,14 +133,17 @@ statList::~statList()  //destructor
 
 void statList::insertAt(double item, int position)
 {
-    assert(length < maxSize);
+    assert(length <= maxSize);
     assert(position >= 0);
-    //assert(position <= maxSize);
+    assert(position <= maxSize);
+    
+    int i;
     
     //Move all elements in the list from the insertion point to the
     //right end one index to the right, then insert the item at the
     //insertion point, position.
-    for (int i=length; i>position; i--)
+    
+    for (i=length; i>position; i--)
         list[i] = list[i-1];
     list[position] = item;
     length++;
@@ -151,36 +155,24 @@ void statList::findIndex(double item)
 {
     int limit = 0;
     
-    while (item > list[limit] && limit < length){
+    while (item > list[limit] && limit < length)
         limit++;
-    }
     
-    insertAt(limit, item);
+    insertAt(item, limit);
 
-}//end insertInOrder
+}
 
 void statList::insertInOrder(ifstream& inFl)
 {
     double nxtVal = 0;
     //while there are values to be read from the stream passed, read
     //each in and call findIndex with the current value.
-    /*
+    
+    
     while (inFl >> nxtVal)
-        findIndex(nxtVal);
-     */
-    
-    int count = 0;
-    
-    while (inFl.eof() != true){
-        inFl >> list[count];
-        nxtVal = list[count];
-        findIndex(nxtVal);
-        inFl.get();
-        count++;
-    }
-    
+        (findIndex(nxtVal));
 
-}//end insertInOrder
+}
 
 #endif
 

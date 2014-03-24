@@ -26,7 +26,7 @@ int main ( int argc, char *argv[] )
     cout << endl;
     //Use c_str() to convert inFileName to a C string and open it
     //as an infile stream.
-    inFile.open(inFileName.c_str());
+    inFile.open(inFileName);
     
     //If the outfile is in use by another application, cease the program.
     if(outFile.is_open()) //test to be certain outfile is NOT open
@@ -34,8 +34,8 @@ int main ( int argc, char *argv[] )
     else
         if (inFile.is_open())
         {
-            outFile.open(outFileName.c_str());
-            cout << "****************" << endl;
+            outFile.open(outFileName);
+            cout << "****************************************************************************************************" << endl;
             //read in the infile contents to the list in sorted order
             while (inFileName != "exit"){
                 //Send the infile stream to be opened and have its
@@ -50,7 +50,7 @@ int main ( int argc, char *argv[] )
             }
             //print the list to stdout
             tvPtr->printList(cout);
-            cout << "****************" << endl;
+            cout << "****************************************************************************************************" << endl;
             //Call a function that will print the list in tabular form
             //and print its statistics to stdout. Author that function
             //elsewhere in this file.
@@ -58,9 +58,17 @@ int main ( int argc, char *argv[] )
             tvPtr->printList(outFile);
             //close both files
             outFile.close();
+            std::cout<< "\n\nTask complete. Press 'return' to exit program.";
+            cin.ignore();
         }
-        else
+    
+        else {
             cout << "Infile " << inFileName << " does not exist.\n";
+            std::cout<< "\n\nPress 'return' to exit program.";
+            cin.ignore();
+        }
+    
+    cin.ignore();
     return 0;
 }
 
