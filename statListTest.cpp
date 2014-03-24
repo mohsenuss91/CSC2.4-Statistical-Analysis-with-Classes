@@ -35,7 +35,7 @@ int main ( int argc, char *argv[] )
         if (inFile.is_open())
         {
             outFile.open(outFileName);
-            cout << "****************************************************************************************************" << endl;
+            cout<< endl;
             //read in the infile contents to the list in sorted order
             while (inFileName != "exit"){
                 //Send the infile stream to be opened and have its
@@ -49,6 +49,7 @@ int main ( int argc, char *argv[] )
                 if (inFileName != "exit") inFile.open(inFileName);
             }
             //print the list to stdout
+            cout << "****************************************************************************************************" << endl;
             tvPtr->printList(cout);
             cout << "****************************************************************************************************" << endl;
             //Call a function that will print the list in tabular form
